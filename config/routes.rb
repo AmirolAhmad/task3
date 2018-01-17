@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   resources :lists do
     member do
-      patch :soft_delete
+      delete :delete
+      patch :restore
     end
     resources :list_items
   end
+  get 'trash' => "lists#trash", as: "trash"
 end
