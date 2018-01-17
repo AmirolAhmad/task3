@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lists.each do |list| %>
+      <tr>
+        <td><%= list.name %></td>
+        <td><%= link_to 'Show', list %></td>
+        <td><%= link_to 'Edit', edit_list_path(list) %></td>
+        <td><%= link_to 'Delete', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "Destroy", soft_delete_list_path(id: list), method: :patch %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New List', new_list_path %>
+
+<h1>Soft Delete Lists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Deleted at</th>
+      <th>Deleted</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @soft_delete_lists.each do |list| %>
+      <tr>
+        <td><%= list.name %></td>
+        <td><%= list.deleted_at %></td>
+        <td><%= list.deleted %></td>
+        <td><%= link_to 'Show', list %></td>
+        <td><%= link_to 'Edit', edit_list_path(list) %></td>
+        <td><%= link_to 'Delete', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
