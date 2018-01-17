@@ -1,0 +1,5 @@
+<h1>Editing List Item</h1>
+
+<%= form_for @list_item, url: list_list_item_path(@list), multipart: true, html: { class: "form-horizontal form-bordered", method: :patch } do |f| %>
+  <%= render partial: 'form', locals: {f: f, post: @list_item} %>
+<% end %>
