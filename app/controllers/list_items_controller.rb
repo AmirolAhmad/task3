@@ -21,11 +21,13 @@ class ListItemsController < ApplicationController
 
   # GET /list_items/1/edit
   def edit
+    @tags = Tag.all
   end
 
   # POST /list_items
   # POST /list_items.json
   def create
+    @tags = Tag.all
     @list_item = @list.list_items.new(list_item_params)
 
     respond_to do |format|
@@ -80,6 +82,6 @@ class ListItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_item_params
-      params.require(:list_item).permit(:list_id, :name, :deleted_at, :deleted)
+      params.require(:list_item).permit(:list_id, :name, :deleted_at, :deleted, :tag_id)
     end
 end

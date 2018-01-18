@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>List:</strong>
-  <%= @list_item.list %>
+  <strong>List Name:</strong>
+  <%= @list_item.list.name %>
 </p>
 
 <p>
@@ -11,14 +11,10 @@
 </p>
 
 <p>
-  <strong>Deleted at:</strong>
-  <%= @list_item.deleted_at %>
+  <strong>Tag:</strong>
+  <% @list_item.tags.each do |tag| %>
+    <%= tag.name %>
+  <% end %>
 </p>
 
-<p>
-  <strong>Deleted:</strong>
-  <%= @list_item.deleted %>
-</p>
-
-<%= link_to 'Edit', edit_list_item_path(@list_item) %> |
-<%= link_to 'Back', list_items_path %>
+<%= link_to 'Back', list_path(@list) %>
